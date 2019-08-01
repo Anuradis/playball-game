@@ -11,7 +11,7 @@ const randomColor = (() => Math.floor(Math.random() * 256));
 const randomCircleSize = (() => Math.floor(Math.random() * (80 - 15)) + 15);
 const randomFallSpeed = (() => Math.floor(Math.random() * (20000 - 10000)) + 10000);
 
-let hSpeed = 0;
+let hSpeed = 20000;
 
 const gamePlan = () => {
 
@@ -36,7 +36,7 @@ const animateCircles = () => {
   circles = document.querySelectorAll(".myStyle")
   for (let i = 0; i < circles.length; i++) {
     let speed = randomFallSpeed();
-    if (speed > hSpeed) {
+    if (speed < hSpeed) {
       hSpeed = speed;
       console.log(hSpeed);
     }
