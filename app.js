@@ -1,14 +1,16 @@
 const ul = document.createElement("ul")
 document.body.appendChild(ul);
 const pointsScored = document.querySelector(".pointsScored span");
-const pointsMissed = document.querySelector(".pointsMissed span")
+const pointsMissed = document.querySelector(".pointsMissed span");
+const startButton = document.querySelector(".start");
+console.log(`startButton`, startButton);
 let missed = 1;
 let scored = 1;
 let circles;
 
 const randomCirclesNumber = Math.floor(Math.random() * (21 - 15)) + 15;
 const randomColor = (() => Math.floor(Math.random() * 256));
-const randomCircleSize = (() => Math.floor(Math.random() * (80 - 15)) + 15);
+const randomCircleSize = (() => Math.floor(Math.random() * (60 - 15)) + 15);
 const randomFallSpeed = (() => Math.floor(Math.random() * (20000 - 10000)) + 10000);
 
 let hSpeed = 0;
@@ -24,7 +26,7 @@ const createRandomCircles = () => {
     const g = randomColor();
     const b = randomColor();
     const circleSize = randomCircleSize();
-    circle.className = "myStyle"
+    circle.className = "circleStyle"
     circle.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
     circle.style.width = `${circleSize}px`;
     circle.style.height = `${circleSize}px`;
@@ -33,7 +35,7 @@ const createRandomCircles = () => {
 }
 
 const animateCircles = () => {
-  circles = document.querySelectorAll(".myStyle")
+  circles = document.querySelectorAll(".circleStyle")
   for (let i = 0; i < circles.length; i++) {
     let speed = randomFallSpeed();
     if (speed > hSpeed) {
@@ -46,7 +48,7 @@ const animateCircles = () => {
         transform: 'translateY(0px)'
       },
       {
-        transform: `translateY(80vh)`
+        transform: `translateY(70vh)`
       }
     ], {
         // timing options
@@ -63,8 +65,7 @@ const animateCircles = () => {
 ul.addEventListener("click", function (e) {
   console.log(e);
   console.log(e.target.classList);
-  console.log()
-  if (e.target.classList.value === document.querySelector("li.myStyle").classList.value) {
+  if (e.target.classList.value === document.querySelector("li.circleStyle").classList.value) {
     pointsScored.textContent = `${scored++}`;
     e.target.remove();
   } else {
@@ -88,7 +89,7 @@ function cleaner() {
 }
 
 //adding actions to START button
-button.addEventListener('click', () => {
+startButton.addEventListener('click', () => {
   //removing existing balls
   cleaner();
   // creating new balls    

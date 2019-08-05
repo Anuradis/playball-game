@@ -3,7 +3,109 @@ body {
   box-sizing: border-box;
 }
 
-.myStyle {
+/* NAVBAR STYLING */
+
+
+
+input {
+  border-radius: 5px;
+  width: 140px;
+  height: 25px;
+}
+
+span {
+  color: yellow;
+}
+
+#menu {
+  height: 55px;
+  background: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-container {
+  display: flex;
+  flex-direction: row;
+  margin: auto 50px auto 80px;
+}
+
+.right-container {
+  flex-direction: row;
+  display: flex;
+  margin: auto 50px;
+}
+
+/* Score Chart styling */
+table {
+  margin: 0;
+  width: 250px;
+  text-align: center;
+}
+
+td.bestResult,
+td.bestResultPoints {
+  color: rgba(246, 250, 0, 0.966);
+  margin: auto 5%;
+  padding-right: 40px;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+td.scored {
+  color: rgb(12, 216, 22);
+  margin: auto 5%;
+  padding-right: 15px;
+}
+
+td.missed {
+  color: darkred;
+  margin: auto 5%;
+  padding-right: 15px;
+}
+
+.pointsScored span {
+  color: greenyellow;
+  font-weight: 700;
+}
+
+.pointsMissed span {
+  color: darkred;
+  font-weight: 700;
+}
+
+/* Buttons styling*/
+
+button,
+input {
+  margin: 0 10px;
+}
+
+.button {
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 50px;
+  width: 140px;
+  height: 40px;
+  text-transform: uppercase;
+
+}
+
+.start.button {
+  border-color: green;
+  background-color: red;
+  color: white;
+}
+
+.login.button {
+  border-color: white;
+  background-color: green;
+  color: white;
+}
+
+/* CIRCLES/BALLS STYLING */
+.circleStyle {
   text-decoration-style: none;
   border: 1px solid grey;
   border-radius: 50%;
@@ -13,45 +115,8 @@ body {
 }
 
 ul {
+  margin-top: 0;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   list-style: none;
-}
-
-table {
-  margin: 0 auto;
-  width: 200px;
-  text-align: center;
-}
-
-.pointsScored span {
-  color: green;
-  font-weight: 500;
-}
-
-.pointsMissed span {
-  color: darkred;
-  font-weight: 700;
-}
-
-/*top div with user interface */
-#menu {
-  height: 50px;
-  background: grey;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* styling button starting game */
-#button {
-  border-style: solid;
-  border-width: 2px;
-  border-color: green;
-  background: red;
-  border-radius: 50px;
-  width: 140px;
-  height: 40px;
-  text-transform: uppercase;
-  color: white;
 }
