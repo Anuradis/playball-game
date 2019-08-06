@@ -120,3 +120,9 @@ ul {
   height: 80vh;
   list-style: none;
 }
+
+
+/*on click event wanishing */
+#disappear {
+  opacity: 0;
+}
