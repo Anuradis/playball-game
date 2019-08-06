@@ -3,24 +3,24 @@ document.body.appendChild(ul);
 const pointsScored = document.querySelector(".pointsScored span");
 const pointsMissed = document.querySelector(".pointsMissed span");
 const startButton = document.querySelector(".start");
-console.log(`startButton`, startButton);
-let missed = 1;
-let scored = 1;
+let missed = 0;
+let scored = 0;
 let circles;
-
-const randomCirclesNumber = Math.floor(Math.random() * (21 - 15)) + 15;
-const randomColor = (() => Math.floor(Math.random() * 256));
-const randomCircleSize = (() => Math.floor(Math.random() * (60 - 15)) + 15);
-const randomFallSpeed = (() => Math.floor(Math.random() * (20000 - 10000)) + 10000);
-
+let randomCirclesNumber;
+let endTimer = 0;
 let hSpeed = 0;
 
-const gamePlan = () => {
 
-}
 
-const createRandomCircles = () => {
-  for (let i = 0; i <= randomCirclesNumber; i++) {
+
+
+
+//creating random cirlces
+let createRandomCircles = () => {
+  const randomColor = (() => Math.floor(Math.random() * 256));
+  const randomCircleSize = (() => Math.floor(Math.random() * (60 - 15)) + 15);
+  randomCirclesNumber = Math.floor(Math.random() * (6 - 2 + 1)) + 2;
+  for (let i = 0; i <= randomCirclesNumber - 1; i++) {
     circle = document.createElement("li")
     const r = randomColor();
     const g = randomColor();
@@ -34,7 +34,11 @@ const createRandomCircles = () => {
   }
 }
 
-const animateCircles = () => {
+
+
+//animating circles
+let animateCircles = () => {
+  const randomFallSpeed = (() => Math.floor(Math.random() * (10000 - 5000)) + 5000);
   circles = document.querySelectorAll(".circleStyle")
   for (let i = 0; i < circles.length; i++) {
     let speed = randomFallSpeed();
@@ -48,7 +52,7 @@ const animateCircles = () => {
         transform: 'translateY(0px)'
       },
       {
-        transform: `translateY(70vh)`
+        transform: `translateY(75vh)`
       }
     ], {
         // timing options
@@ -58,27 +62,36 @@ const animateCircles = () => {
         fill: "forwards"
       });
   };
-  setTimeout(() => alert(`sasssanka`), hSpeed);
-  console.log(`after forloop`, hSpeed);
+ 
+//here function ending game after highest time - second case when game ends
+endTimer = setTimeout(() => nextGame(), hSpeed);;
 }
 
-ul.addEventListener("click", function (e) {
+
+
+// function removing elements and counting scores on click
+ ul.addEventListener("click", function (e) {
   console.log(e);
   console.log(e.target.classList);
   if (e.target.classList.value === document.querySelector("li.circleStyle").classList.value) {
-    pointsScored.textContent = `${scored++}`;
-    e.target.remove();
+    scored++;
+    pointsScored.textContent = scored;
+    e.target.setAttribute('id', 'disappear');
   } else {
     setTimeout(function () {
-      pointsMissed.textContent = `${missed++}`;
+      missed++;
+      pointsMissed.textContent = missed;
       document.body.style.backgroundColor = "white";
     }, 500);
     document.body.style.backgroundColor = "red";
   }
-
+  endGame1();
 });
 
-//removing existing balls
+
+
+
+//removing existing balls, scores, setTimeout etc.
 function cleaner() {
   let child = ul.lastElementChild;
 
@@ -86,19 +99,68 @@ function cleaner() {
     ul.removeChild(child);
     child = ul.lastElementChild;
   }
+  
+  missed = 0;
+  scored = 0;
+  pointsScored.textContent = scored;
+  pointsMissed.textContent = missed;
+
+  if (endTimer) {
+    clearTimeout(endTimer);
 }
+}
+
+
 
 //adding actions to START button
 startButton.addEventListener('click', () => {
   //removing existing balls
   cleaner();
+  
   // creating new balls    
   createRandomCircles();
 
   //animating balls
   animateCircles();
-
 })
 
+
+
+//function asking for next game
+function nextGame () {
+  if (window.confirm("Do You wanna play again?")) {
+    gameInit();
+    
+   }else {
+     cleaner();
+   }
+}
+
+
+
+// declaring first case when game ends
+function endGame1() {
+  if ( scored == randomCirclesNumber ) {
+    nextGame();
+  }
+}
+
+
+
+//function initializing new game
+function gameInit() {
+  
+//removing existing balls
+cleaner();
+
+// creating new balls    
 createRandomCircles();
+
+//animating balls
 animateCircles();
+
+// declaring when game ends
+endGame1();
+}
+
+
