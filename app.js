@@ -9,8 +9,29 @@ let circles;
 let randomCirclesNumber;
 let endTimer = 0;
 let hSpeed = 0;
+let playerName;
+let currentPlayer;
+let best = 0;
+
+//best score functionality
+function bestScore() {
+  
+  let bestResult = document.querySelector(".bestResultPoints");
+  if (scored > best) {
+    best = scored;
+    bestResult.innerHTML = `${playerName} ${best}`;
+  }
+}
 
 
+//function adding text from input to menu
+function addText(){
+  let player = document.querySelector("#uName");
+  playerName = player.value;
+  currentPlayer = document.querySelector(".currentPlayer")
+  console.log(playerName);
+  currentPlayer.innerHTML = playerName
+}
 
 
 
@@ -19,7 +40,7 @@ let hSpeed = 0;
 let createRandomCircles = () => {
   const randomColor = (() => Math.floor(Math.random() * 256));
   const randomCircleSize = (() => Math.floor(Math.random() * (60 - 15)) + 15);
-  randomCirclesNumber = Math.floor(Math.random() * (6 - 2 + 1)) + 2;
+  randomCirclesNumber = Math.floor(Math.random() * (10 - 2 + 1)) + 2;
   for (let i = 0; i <= randomCirclesNumber - 1; i++) {
     circle = document.createElement("li")
     const r = randomColor();
@@ -140,7 +161,9 @@ function nextGame () {
 
 // declaring first case when game ends
 function endGame1() {
+  
   if ( scored == randomCirclesNumber ) {
+    bestScore();
     nextGame();
   }
 }
@@ -162,5 +185,4 @@ animateCircles();
 // declaring when game ends
 endGame1();
 }
-
 
