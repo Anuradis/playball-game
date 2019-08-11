@@ -20,7 +20,6 @@ function bestScore() {
   if (scored > best) {
     best = scored;
     bestResult.innerHTML = `${playerName} ${best}`;
-    
   }
 }
 
@@ -40,8 +39,8 @@ function addText(){
 //creating random cirlces
 let createRandomCircles = () => {
   const randomColor = (() => Math.floor(Math.random() * 256));
-  const randomCircleSize = (() => Math.floor(Math.random() * (60 - 15)) + 15);
-  randomCirclesNumber = Math.floor(Math.random() * (5 - 2 + 1)) + 2;
+  const randomCircleSize = (() => Math.floor(Math.random() * (5 - 3)) +3);
+  randomCirclesNumber = Math.floor(Math.random() * (10 - 2 + 1)) + 2;
   for (let i = 0; i <= randomCirclesNumber - 1; i++) {
     circle = document.createElement("li")
     const r = randomColor();
@@ -91,17 +90,15 @@ endTimer = setTimeout(() => nextGame(), hSpeed);;
 
 
 
-
-
 // function removing elements and counting scores on click
  ul.addEventListener("click", function (e) {
-  
   console.log(e);
   console.log(e.target.classList);
   if (e.target.classList.value === document.querySelector("li.circleStyle").classList.value) {
-    e.target.setAttribute('id', 'disappear');
     scored++;
     pointsScored.textContent = scored;
+    e.target.setAttribute('id', 'disappear');
+    endGame1()
   } else {
     setTimeout(function () {
       missed++;
@@ -110,8 +107,9 @@ endTimer = setTimeout(() => nextGame(), hSpeed);;
     }, 500);
     document.body.style.backgroundColor = "red";
   }
-  endGame1();
+  
 }
+
 )
 
 
@@ -163,16 +161,15 @@ function endGame1() {
 
 //function asking for next game
 function nextGame () {
-  //setTimeout for fixing confirm pop up before ball disappearing in Chrome
-  setTimeout( ()=> {
   if (window.confirm("Do You wanna play again?")) {
     gameInit();
     
    }else {
      cleaner();
    }
-},200)
 }
+
+
 
 
 
@@ -191,6 +188,6 @@ createRandomCircles();
 animateCircles();
 
 // declaring when game ends
-
+endGame1();
 }
 

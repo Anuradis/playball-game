@@ -20,7 +20,6 @@ function bestScore() {
   if (scored > best) {
     best = scored;
     bestResult.innerHTML = `${playerName} ${best}`;
-    
   }
 }
 
@@ -163,15 +162,14 @@ function endGame1() {
 
 //function asking for next game
 function nextGame () {
-  //setTimeout for fixing confirm pop up before ball disappearing in Chrome
-  setTimeout( ()=> {
-  if (window.confirm("Do You wanna play again?")) {
+  if (scored = best) {
+  if (body.confirm("Do You wanna play again?")) {
     gameInit();
     
    }else {
      cleaner();
    }
-},200)
+  }
 }
 
 
@@ -191,6 +189,6 @@ createRandomCircles();
 animateCircles();
 
 // declaring when game ends
-
+endGame1();
 }
 

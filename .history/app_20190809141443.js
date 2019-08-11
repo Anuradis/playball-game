@@ -20,7 +20,6 @@ function bestScore() {
   if (scored > best) {
     best = scored;
     bestResult.innerHTML = `${playerName} ${best}`;
-    
   }
 }
 
@@ -95,7 +94,6 @@ endTimer = setTimeout(() => nextGame(), hSpeed);;
 
 // function removing elements and counting scores on click
  ul.addEventListener("click", function (e) {
-  
   console.log(e);
   console.log(e.target.classList);
   if (e.target.classList.value === document.querySelector("li.circleStyle").classList.value) {
@@ -110,7 +108,7 @@ endTimer = setTimeout(() => nextGame(), hSpeed);;
     }, 500);
     document.body.style.backgroundColor = "red";
   }
-  endGame1();
+  endGame1()
 }
 )
 
@@ -148,6 +146,7 @@ startButton.addEventListener('click', () => {
 
   //animating balls
   animateCircles();
+  setTimeout(confirm("kkk"), 2000);
 })
 
 
@@ -163,16 +162,15 @@ function endGame1() {
 
 //function asking for next game
 function nextGame () {
-  //setTimeout for fixing confirm pop up before ball disappearing in Chrome
-  setTimeout( ()=> {
-  if (window.confirm("Do You wanna play again?")) {
+  if (confirm("Do You wanna play again?")) {
     gameInit();
     
    }else {
      cleaner();
    }
-},200)
 }
+
+
 
 
 
@@ -191,6 +189,6 @@ createRandomCircles();
 animateCircles();
 
 // declaring when game ends
-
+endGame1();
 }
 

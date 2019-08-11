@@ -20,7 +20,6 @@ function bestScore() {
   if (scored > best) {
     best = scored;
     bestResult.innerHTML = `${playerName} ${best}`;
-    
   }
 }
 
@@ -83,6 +82,7 @@ let animateCircles = () => {
         delay: 30,
         fill: "forwards"
       });
+      endGame1();
   };
  
 //here function ending game after highest time - second case when game ends
@@ -110,7 +110,6 @@ endTimer = setTimeout(() => nextGame(), hSpeed);;
     }, 500);
     document.body.style.backgroundColor = "red";
   }
-  endGame1();
 }
 )
 
@@ -163,15 +162,13 @@ function endGame1() {
 
 //function asking for next game
 function nextGame () {
-  //setTimeout for fixing confirm pop up before ball disappearing in Chrome
-  setTimeout( ()=> {
+  
   if (window.confirm("Do You wanna play again?")) {
     gameInit();
     
    }else {
      cleaner();
    }
-},200)
 }
 
 
@@ -191,6 +188,6 @@ createRandomCircles();
 animateCircles();
 
 // declaring when game ends
-
+endGame1();
 }
 
