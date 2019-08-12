@@ -105,15 +105,25 @@ input {
 }
 
 .start.button {
-  border-color: green;
-  background-color: red;
-  color: white;
-}
-
-.login.button {
   border-color: white;
   background-color: green;
   color: white;
+}
+
+
+
+.login.button {
+  border-color: white;
+  background-color: blue;
+  color: white;
+}
+/*Changing style of disabled buttons*/
+.start.button:disabled{
+  background-color: red;
+}
+
+.login.button:disabled{
+  background-color: red;
 }
 
 /* CIRCLES/BALLS STYLING */

@@ -27,13 +27,21 @@ function bestScore() {
 
 //function adding text from input to menu
 function addText(){
-  let player = document.querySelector("#uName");
-  playerName = player.value;
-  currentPlayer = document.querySelector(".currentPlayer")
-  console.log(playerName);
-  currentPlayer.innerHTML = playerName
+	let player = document.querySelector("#uName");
+	playerName = player.value;
+	// Checking if login input is not empty and alerting to write
+	if(playerName.valueOf() === undefined || playerName.valueOf() == "")
+	{
+	document.querySelector(".start").disabled = true;
+	alert("Please enter your name to be able to start!");
+	}
+	else{
+	  currentPlayer = document.querySelector(".currentPlayer")
+	  console.log(playerName);
+	  currentPlayer.innerHTML = playerName
+	  document.querySelector(".start").disabled = false;
+	}
 }
-
 
 
 
@@ -54,6 +62,8 @@ let createRandomCircles = () => {
     circle.style.height = `${circleSize}px`;
     ul.appendChild(circle);
   }
+  //Disabling login function after the game started
+  document.querySelector(".login").disabled = true;
 }
 
 
@@ -163,6 +173,8 @@ function endGame1() {
 
 //function asking for next game
 function nextGame () {
+	//Enabling login function after the game
+	document.querySelector(".login").disabled = false;
   //setTimeout for fixing confirm pop up before ball disappearing in Chrome
   setTimeout( ()=> {
   if (window.confirm("Do You wanna play again?")) {
