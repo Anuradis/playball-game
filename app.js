@@ -12,6 +12,7 @@ let hSpeed = 0;
 let playerName;
 let currentPlayer;
 let best = 0;
+var playerBase = [];
 
 //best score functionality
 function bestScore() {
@@ -30,19 +31,30 @@ function addText(){
 	let player = document.querySelector("#uName");
 	playerName = player.value;
 	// Checking if login input is not empty and alerting to write
-	if(playerName.valueOf() === undefined || playerName.valueOf() == "")
-	{
-	document.querySelector(".start").disabled = true;
-	alert("Please enter your name to be able to start!");
+	if(playerName.valueOf() === undefined || playerName.valueOf() == ""){
+		document.querySelector(".start").disabled = true;
+		alert("Please enter your name to be able to start!");
+	}
+	//Checking if login was used before
+	else if (playerBase.some(ifUsed) == true){
+		document.querySelector(".start").disabled = true;
+		alert("Login has been used before.Please use another one!");
 	}
 	else{
 	  currentPlayer = document.querySelector(".currentPlayer")
 	  console.log(playerName);
+	  var nrPlayer = playerBase.length;
+	  playerBase[nrPlayer] = playerName;
+	  console.log(playerBase);
 	  currentPlayer.innerHTML = playerName
 	  document.querySelector(".start").disabled = false;
 	}
 }
 
+//Checking if playerBase array has same element as current player's name
+function ifUsed (array){
+	return array == playerName;
+}
 
 
 //creating random cirlces
