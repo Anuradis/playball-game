@@ -1,11 +1,19 @@
-const ul = document.createElement("ul")
-document.body.appendChild(ul);
+const ul = document.createElement("ul");
+const header = document.querySelector("header");
 const startButton = document.querySelector(".start")
+const loginBtn = document.querySelector(".login");
 const pointsScored = document.querySelector(".pointsScored span");
 const pointsMissed = document.querySelector(".pointsMissed span");
-let currentPlayer = document.querySelector(".currentPlayer");
-let loginBtn = document.querySelector(".login");
-let player = document.querySelector("#uName");
+const currentPlayer = document.querySelector(".currentPlayer");
+const player = document.querySelector("#uName");
+const fullGameTrack = document.createElement("audio")
+header.parentNode.insertBefore(ul, header.nextSibling);
+ul.parentNode.insertBefore(fullGameTrack, ul.nextSibling);
+fullGameTrack.src = "./sounds/full-game-track.wav";
+fullGameTrack.loop=true;
+ul.style.width = "70vw";
+ul.style.margin = "auto";
+
 let missed = 0;
 let scored = 0;
 let result = 0;
@@ -88,23 +96,28 @@ let animateCircles = () => {
 
 // function removing elements and counting scores on click
 ul.addEventListener("click", function (e) {
-
+  const missedSound = new Audio();
+  const scoredSound = new Audio();
+  scoredSound.src = "./sounds/cleaning-spray.flac"
+  missedSound.src = "./sounds/missed-sound.wav"
   console.log(e);
   console.log(e.target.classList);
   if (e.target.classList.value === document.querySelector("li.circleStyle").classList.value) {
     e.target.setAttribute('id', 'disappear');
+    scoredSound.play();
     scored++;
     pointsScored.textContent = scored;
   } else {
     setTimeout(function () {
+      missedSound.play();
       missed++;
       pointsMissed.textContent = missed;
-      document.body.style.backgroundImage = "url('corona_blue.jpg')";
+      document.body.style.backgroundImage = "url('./images/corona_blue.jpg')";
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundPosition = "center";
 
     }, 500);
-    document.body.style.backgroundImage = "url('coronavirus_background.png')";
+    document.body.style.backgroundImage = "url('./images/coronavirus_background.png')";
   document.body.style.backgroundSize = "cover";
   document.body.style.backgroundPosition = "center";
   
@@ -152,6 +165,9 @@ loginBtn.addEventListener('click', () => {
 
 //adding actions to START button
 startButton.addEventListener('click', () => {
+
+  //play music
+  fullGameTrack.play();
   //removing existing balls
   cleaner();
 
@@ -160,6 +176,8 @@ startButton.addEventListener('click', () => {
 
   //animating balls
   animateCircles();
+
+  
 
 })
 
@@ -251,7 +269,7 @@ function logOut () {
   player.disabled = false;
   player.value = "";
   startButton.disabled = true;
-  loginBtn.classList = "login button";
+  loginBtn.classList = "login button btn btn-primary";
   loginBtn.innerHTML = "LogIn";
   currentPlayer.innerHTML = "";
   cleaner();
@@ -260,7 +278,7 @@ function logOut () {
 
 function logIn () {
     loginBtn.innerHTML = "Log Out"
-    loginBtn.classList = "logout-btn button";
+    loginBtn.classList = "logout-btn button btn btn-warning";
     var nrPlayer = playerBase.length;
     playerBase[nrPlayer] = playerName;
     console.log(playerBase);

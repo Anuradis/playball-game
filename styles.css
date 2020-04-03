@@ -1,10 +1,11 @@
 body {
   margin: 0;
   box-sizing: border-box;
-  background-image: url("corona_blue.jpg");
+  background-image: url("./images/corona_blue.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  height: 90vh;
 }
 
 /* NAVBAR STYLING */
@@ -20,19 +21,25 @@ input {
 span {
   color: yellow;
 }
+.container {
+  background: rgba(210, 211, 195, 0.5); 
+  width: 100vw;
+  height: 85px;
+}
 
-#menu {
-  height: 90px;
-  /* background: grey; */
+.menu {
+  height: inherit;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: auto;
+  padding: auto;
 }
 
 .left-container {
   display: flex;
   flex-direction: row;
-  margin: auto 50px auto 80px;
+  margin: auto 100px auto 80px;
 }
 
 .right-container {
@@ -45,6 +52,8 @@ span {
 table {
   margin: 0;
   width: 250px;
+  position: relative;
+  z-index: inherit;
   text-align: center;
 }
 
@@ -55,6 +64,8 @@ td.currentPlayer {
   padding-right: 40px;
   font-weight: 700;
   font-size: 1.2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .player,
@@ -97,6 +108,12 @@ button,
 input {
   margin: 0 10px;
 }
+.music {
+  border-radius: 100px;
+  border-color: white;
+  background-color: white;
+  margin-left: 70px;
+}
 
 .button {
   border-style: solid;
@@ -108,25 +125,45 @@ input {
 
 .start.button {
   border-color: white;
-  background-color: green;
+  background-color: #79ce8e;
   color: white;
 }
 
 .logout-btn {
   border-color: white;
-  background-color: yellowgreen;
+  background-color: #f8ea26;
   color: white;
-}
+} 
 
 .login.button {
   border-color: white;
-  background-color: blue;
-  color: white;
+  color: #212529;
+  background-color: #f8f9fa;
+} 
+
+.start:hover {
+  color: #212529;
+  background-color: #63cd7d;
+  border-color: #79ce8e;
 }
-/*Changing style of disabled buttons*/
+
+.login.button:hover {
+  color: #212529;
+  background-color: #f8f9fa;
+  border-color: #49A0FE;
+}
+
+.logout-btn:hover {
+  color: #212529;
+  background-color: #f8ea26;
+  border-color: rgb(254, 221, 73);
+}
+
+/* Changing style of disabled buttons
+*/
 .start.button:disabled{
   background-color: red;
-}
+} 
 
 .login.button:disabled{
   background-color: red;
@@ -134,25 +171,29 @@ input {
 
 /* CIRCLES/BALLS STYLING */
 .circleStyle {
-  background-image: url("coronavirus.png");
+  background-image: url("./images/coronavirus.png");
   object-fit: cover;
   background-repeat: no-repeat;
   background-position: center center;
   text-decoration-style: none;
-  /* border: 1px solid grey; */
+  border: 1px solid grey;
    border-radius: 50%;
-  /* margin: 10px; */
   float: left;
-  cursor: url('spray64.png'), auto;
+  cursor: url('./images/spray64.png'), auto;
 }
 
 ul {
-  margin-top: 0;
   width: 100%;
-  height: 80vh;
+  height: 70vh;
+  position: relative;
+  padding: 0;
+  margin: 0;
   list-style: none;
 }
-
+main {
+  padding: 0;
+  margin: 0;
+}
 
 /*on click event wanishing */
 #disappear {
