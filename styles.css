@@ -1,9 +1,13 @@
 body {
   margin: 0;
   box-sizing: border-box;
+  background-image: url("corona_blue.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
-/* changed the NAVBAR STYLING */
+/* NAVBAR STYLING */
 
 
 
@@ -14,17 +18,15 @@ input {
 }
 
 span {
-  color: orange;
-  margin-top: 7px;
+  color: yellow;
 }
 
 #menu {
-  height: 75px;
-  background: #8789a3;
+  height: 90px;
+  /* background: grey; */
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Nunito Sans";
 }
 
 .left-container {
@@ -52,7 +54,7 @@ td.currentPlayer {
   margin: auto 5%;
   padding-right: 40px;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .player,
@@ -62,7 +64,7 @@ td.bestResultPoints {
   margin: auto 5%;
   padding-right: 40px;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 
@@ -71,14 +73,12 @@ td.scored {
   color: rgb(12, 216, 22);
   margin: auto 5%;
   padding-right: 15px;
-  font-weight: 700;
 }
 
 td.missed {
   color: darkred;
   margin: auto 5%;
   padding-right: 15px;
-  font-weight: 700;
 }
 
 .pointsScored span {
@@ -104,48 +104,47 @@ input {
   border-radius: 50px;
   width: 140px;
   height: 40px;
-  text-transform: uppercase;
-
 }
 
 .start.button {
-  background-color: red;
-  border: none;
+  border-color: white;
+  background-color: green;
   color: white;
 }
-/* Added buttons hover styling*/
-.start.button:hover
-{
-  background-color:#f02e2e;
-  cursor:pointer;
+
+.logout-btn {
+  border-color: white;
+  background-color: yellowgreen;
+  color: white;
 }
 
 .login.button {
-  background-color: green;
-  border:none;
+  border-color: white;
+  background-color: blue;
   color: white;
 }
-
-.login.button:hover
-{
-    background-color:#04b533;
-    cursor:pointer;
+/*Changing style of disabled buttons*/
+.start.button:disabled{
+  background-color: red;
 }
 
+.login.button:disabled{
+  background-color: red;
+}
 
 /* CIRCLES/BALLS STYLING */
 .circleStyle {
+  background-image: url("coronavirus.png");
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   text-decoration-style: none;
-  border: 1px solid grey;
-  border-radius: 50%;
-  margin: 10px;
+  /* border: 1px solid grey; */
+   border-radius: 50%;
+  /* margin: 10px; */
   float: left;
-  cursor: crosshair;
+  cursor: url('spray64.png'), auto;
 }
-/*Added a bigger border for the circles on hover */
-.circleStyle:hover{
-    border: 3px solid #8789a3;
-  }
 
 ul {
   margin-top: 0;

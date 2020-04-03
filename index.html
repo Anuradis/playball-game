@@ -9,26 +9,28 @@
   <title>BallGame</title>
 </head>
 <div id="menu">
-  <table class="left-container 
+  <table class="left-container
   tg">
     <tr>
+      <td class="player">Player</td>
       <td class="bestResult">Best</td>
       <td class="scored">Scored</td>
       <td class="missed">Missed</td>
     </tr>
     <tr>
+      <td class="currentPlayer"><span>-</span></td>
       <td class="bestResultPoints"><span>-</span></td>
       <td class="pointsScored"><span>-</span></td>
       <td class="pointsMissed"><span>-</span></td>
     </tr>
   </table>
   <div class="right-container">
-    <form>
+    <form ></form>
       <span>Username:</span>
-      <input type="text" placeholder="type your username" id="uName" required>
-      <button class="button login" type="submit">Login</button>
+      <input type="text" placeholder="type your username" id="uName" autofocus>
+      <button class="button login">LogIn</button>
     </form>
-    <button class="button start">START!</button>
+    <button class="button start" disabled >Start!</button>
   </div>
 </div>
 
