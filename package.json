@@ -1,0 +1,19 @@
+{
+  "name": "playball-game",
+  "version": "1.0.0",
+  "description": "Playball-game was created by \"MafiaJs\" team, the main purpose was to enchance JavaScript skills and get first exepriance in team project.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anuradis/playball-game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anuradis/playball-game/issues"
+  },
+  "homepage": "https://github.com/Anuradis/playball-game#readme"
+}
