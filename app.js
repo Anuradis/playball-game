@@ -12,7 +12,7 @@ const fullGameTrack = document.createElement("audio");
 header.parentNode.insertBefore(ul, header.nextSibling);
 ul.parentNode.insertBefore(fullGameTrack, ul.nextSibling);
 fullGameTrack.src = "./sounds/full-game-track.wav";
-fullGameTrack.loop=true;
+fullGameTrack.loop = true;
 ul.style.width = "70vw";
 ul.style.margin = "auto";
 
@@ -44,24 +44,24 @@ ul.addEventListener("click", function (e) {
     scoredSound.play();
     scored++;
     scored >= circlesNumber ? pointsScored.textContent = scored : pointsScored.textContent = scoredCounter;
-    while(circlesNumber === scored) {
+    while (circlesNumber === scored) {
       clearTimeout(endTimer);
       processToNextLvl();
-    }   
+    }
   } else {
     setTimeout(function () {
       missedSound.play();
       missed++;
       pointsMissed.textContent = missed;
-      document.body.style.backgroundImage = "url('./images/corona_blue.jpg')";
+      document.body.style.backgroundImage = "url('./images/blue.jpg')";
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundPosition = "center";
     }, 500);
-    document.body.style.backgroundImage = "url('./images/coronavirus_background.png')";
-  document.body.style.backgroundSize = "cover";
-  document.body.style.backgroundPosition = "center";
-    }
-  })
+    document.body.style.backgroundImage = "url('./images/red.png')";
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center";
+  }
+})
 
 loginBtn.addEventListener('click', () => {
   if (loginBtn.innerHTML == "LogIn") {
@@ -77,8 +77,8 @@ musicButton.addEventListener('click', () => {
     icon.style.color = "black";
     fullGameTrack.play();
   } else {
-  fullGameTrack.pause();
-  icon.style.color = "red"; 
+    fullGameTrack.pause();
+    icon.style.color = "red";
   }
 })
 
@@ -94,7 +94,7 @@ const ifUsed = (array) => {
   return array == playerName;
 }
 
-const arrSum = arr => arr.reduce((a,b) => a + b, 0)
+const arrSum = arr => arr.reduce((a, b) => a + b, 0)
 
 //CLEANER - RESET existing balls, scores, setTimeout etc.
 const cleaner = () => {
@@ -121,7 +121,7 @@ const cleaner = () => {
 const createRandomCircles = () => {
   const randomColor = (() => Math.floor(Math.random() * 256));
   const randomCircleSize = (() => Math.floor(Math.random() * (120 - 15)) + 15);
-  for (let i = 0; i <= circlesNumber - 1 ; i++) {
+  for (let i = 0; i <= circlesNumber - 1; i++) {
     circle = document.createElement("li")
     const r = randomColor();
     const g = randomColor();
@@ -152,12 +152,12 @@ const animateCircles = () => {
         transform: `translateY(75vh)`
       }
     ], {
-        // timing options
-        duration: speed,
-        iterations: 1,
-        delay: 30,
-        fill: "forwards"
-      });
+      // timing options
+      duration: speed,
+      iterations: 1,
+      delay: 30,
+      fill: "forwards"
+    });
   };
   //here function ending game after highest time - second case when game ends
   endTimer = setTimeout(() => endGame(), speed);
@@ -193,11 +193,11 @@ const processToNextLvl = () => {
 }
 
 const endGame = () => {
-    //Establish result
-    resultAndDifferenceCounted();
-    bestScore();
-    displayResults();
-    nextGame();
+  //Establish result
+  resultAndDifferenceCounted();
+  bestScore();
+  displayResults();
+  nextGame();
 }
 
 const bestScore = () => {
@@ -211,7 +211,7 @@ const bestScore = () => {
 const resultAndDifferenceCounted = () => {
   result = scoredCounter - missed;
   difference = best - result;
-  if(difference < 0) {
+  if (difference < 0) {
     difference = difference * (-1)
   }
 }
@@ -228,8 +228,8 @@ const addText = () => {
   else if (playerBase.some(ifUsed) == true) {
     console.log("already used name");
   } else {
-   console.log("you already used this account");
-   logIn();
+    console.log("you already used this account");
+    logIn();
   }
 }
 
@@ -245,18 +245,16 @@ const logOut = () => {
 }
 
 const logIn = () => {
-    loginBtn.innerHTML = "Log Out"
-    loginBtn.classList = "logout-btn button btn btn-warning";
-    var nrPlayer = playerBase.length;
-    playerBase[nrPlayer] = playerName;
-    console.log(playerBase);
-    currentPlayer.innerHTML = playerName
-    startButton.disabled = false;
-    player.disabled = true;
+  loginBtn.innerHTML = "Log Out"
+  loginBtn.classList = "logout-btn button btn btn-warning";
+  var nrPlayer = playerBase.length;
+  playerBase[nrPlayer] = playerName;
+  console.log(playerBase);
+  currentPlayer.innerHTML = playerName
+  startButton.disabled = false;
+  player.disabled = true;
 }
 
 const displayResults = () => {
-  if (window.alert(`You have scored ${scoredCounter} times and missed ${missed} times your total result is ${result} points. Your result is ${result < best ? "lower" : "higher"} than best result by ${difference}`)) {
-    }
-  };
-
+  if (window.alert(`You have scored ${scoredCounter} times and missed ${missed} times your total result is ${result} points. Your result is ${result < best ? "lower" : "higher"} than best result by ${difference}`)) {}
+};
