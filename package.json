@@ -15,5 +15,7 @@
   "bugs": {
     "url": "https://github.com/Anuradis/playball-game/issues"
   },
-  "homepage": "https://github.com/Anuradis/playball-game#readme"
+  "homepage": "https://github.com/Anuradis/playball-game#readme",
+  "dependencies": {
+  }
 }
